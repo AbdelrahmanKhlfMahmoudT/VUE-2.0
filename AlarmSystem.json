@@ -1,0 +1,590 @@
+{
+  "ruleChain": {
+    "name": "Environment Alarms",
+    "type": "CORE",
+    "firstRuleNodeId": null,
+    "root": false,
+    "debugMode": true,
+    "configuration": null,
+    "additionalInfo": {
+      "description": ""
+    }
+  },
+  "metadata": {
+    "version": 9,
+    "firstNodeIndex": 21,
+    "nodes": [
+      {
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "CO2 Check",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "jsScript": null,
+          "tbelScript": "return msg.co2_ppm > 9;"
+        },
+        "additionalInfo": {
+          "description": null,
+          "layoutX": 200,
+          "layoutY": 100
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
+        "name": "CO2 Alarm",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "alarmType": "High CO2 level",
+          "severity": "CRITICAL",
+          "propagate": false,
+          "overwriteAlarmDetails": false,
+          "alarmDetailsBuildTbel": "return {};",
+          "dynamicSeverity": false
+        },
+        "additionalInfo": {
+          "layoutX": 500,
+          "layoutY": 50
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.action.TbClearAlarmNode",
+        "name": "CO2 Clear",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "alarmType": "High CO2 level",
+          "alarmDetailsBuildTbel": "return {};"
+        },
+        "additionalInfo": {
+          "layoutX": 500,
+          "layoutY": 150
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "NH3 Check",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "jsScript": null,
+          "tbelScript": "return msg.nh3_ppm > 9;"
+        },
+        "additionalInfo": {
+          "description": null,
+          "layoutX": 200,
+          "layoutY": 250
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
+        "name": "NH3 Alarm",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "alarmType": "High NH3 level",
+          "severity": "CRITICAL",
+          "propagate": false,
+          "overwriteAlarmDetails": false,
+          "alarmDetailsBuildTbel": "return {};"
+        },
+        "additionalInfo": {
+          "layoutX": 500,
+          "layoutY": 200
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.action.TbClearAlarmNode",
+        "name": "NH3 Clear",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "alarmType": "High NH3 level",
+          "alarmDetailsBuildTbel": "return {};"
+        },
+        "additionalInfo": {
+          "layoutX": 500,
+          "layoutY": 300
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "TDS Check",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "jsScript": null,
+          "tbelScript": "return msg.tds_ppm > 9;"
+        },
+        "additionalInfo": {
+          "description": null,
+          "layoutX": 200,
+          "layoutY": 400
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
+        "name": "TDS Alarm",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "alarmType": "High TDS level",
+          "severity": "MAJOR",
+          "propagate": false,
+          "overwriteAlarmDetails": false,
+          "alarmDetailsBuildTbel": "return {};"
+        },
+        "additionalInfo": {
+          "layoutX": 500,
+          "layoutY": 350
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.action.TbClearAlarmNode",
+        "name": "TDS Clear",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "alarmType": "High TDS level",
+          "alarmDetailsBuildTbel": "return {};"
+        },
+        "additionalInfo": {
+          "layoutX": 500,
+          "layoutY": 450
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "Distance Check",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "jsScript": null,
+          "tbelScript": "return msg.distance_cm < 10;"
+        },
+        "additionalInfo": {
+          "description": null,
+          "layoutX": 200,
+          "layoutY": 550
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
+        "name": "Distance Alarm",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "alarmType": "Low Distance",
+          "severity": "WARNING",
+          "propagate": false,
+          "overwriteAlarmDetails": false,
+          "alarmDetailsBuildTbel": "return {};"
+        },
+        "additionalInfo": {
+          "layoutX": 500,
+          "layoutY": 500
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.action.TbClearAlarmNode",
+        "name": "Distance Clear",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "alarmType": "Low Distance",
+          "alarmDetailsBuildTbel": "return {};"
+        },
+        "additionalInfo": {
+          "layoutX": 500,
+          "layoutY": 600
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "Temperature Check",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "tbelScript": "return payload.temperature_c > 33;"
+        },
+        "additionalInfo": {
+          "layoutX": 200,
+          "layoutY": 700
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
+        "name": "Temperature Alarm",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "alarmType": "High Temperature",
+          "severity": "MAJOR",
+          "propagate": false,
+          "overwriteAlarmDetails": false,
+          "alarmDetailsBuildTbel": "return {};"
+        },
+        "additionalInfo": {
+          "layoutX": 500,
+          "layoutY": 650
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.action.TbClearAlarmNode",
+        "name": "Temperature Clear",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "alarmType": "High Temperature",
+          "alarmDetailsBuildTbel": "return {};"
+        },
+        "additionalInfo": {
+          "layoutX": 500,
+          "layoutY": 750
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "Humidity Check",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "jsScript": null,
+          "tbelScript": "return msg.humidity_percent > 85;"
+        },
+        "additionalInfo": {
+          "description": null,
+          "layoutX": 200,
+          "layoutY": 850
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
+        "name": "Humidity Alarm",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "alarmType": "High Humidity",
+          "severity": "MINOR",
+          "propagate": false,
+          "overwriteAlarmDetails": false,
+          "alarmDetailsBuildTbel": "return {};"
+        },
+        "additionalInfo": {
+          "layoutX": 500,
+          "layoutY": 800
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.action.TbClearAlarmNode",
+        "name": "Humidity Clear",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "alarmType": "High Humidity",
+          "alarmDetailsBuildTbel": "return {};"
+        },
+        "additionalInfo": {
+          "layoutX": 500,
+          "layoutY": 900
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "Light Check",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "jsScript": null,
+          "tbelScript": "return msg.light_percent > 95;"
+        },
+        "additionalInfo": {
+          "description": null,
+          "layoutX": 200,
+          "layoutY": 1000
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.action.TbCreateAlarmNode",
+        "name": "Light Alarm",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "alarmType": "High Light",
+          "severity": "WARNING",
+          "propagate": false,
+          "overwriteAlarmDetails": false,
+          "alarmDetailsBuildTbel": "return {};"
+        },
+        "additionalInfo": {
+          "layoutX": 500,
+          "layoutY": 950
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.action.TbClearAlarmNode",
+        "name": "Light Clear",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "alarmType": "High Light",
+          "alarmDetailsBuildTbel": "return {};"
+        },
+        "additionalInfo": {
+          "layoutX": 500,
+          "layoutY": 1050
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "router",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "scriptLang": "TBEL",
+          "jsScript": "return msg.temperature > 20;",
+          "tbelScript": "return true;"
+        },
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 52,
+          "layoutY": 311
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.mail.TbMsgToEmailNode",
+        "name": "CO2 alarm",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "fromTemplate": "aelrahmen128@gmail.com",
+          "toTemplate": "aelrahmen128@gmail.com",
+          "ccTemplate": null,
+          "bccTemplate": null,
+          "subjectTemplate": "Device ${deviceType} temperature high",
+          "mailBodyType": "false",
+          "bodyTemplate": "Device ${deviceName} has high temperature $[temperature]"
+        },
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 775,
+          "layoutY": 114
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.mail.TbSendEmailNode",
+        "name": "high CO2",
+        "debugSettings": null,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "configuration": {
+          "useSystemSmtpSettings": true,
+          "smtpHost": "localhost",
+          "smtpPort": 25,
+          "username": null,
+          "password": null,
+          "smtpProtocol": "smtp",
+          "timeout": 10000,
+          "enableTls": false,
+          "tlsVersion": "TLSv1.2",
+          "enableProxy": false,
+          "proxyHost": null,
+          "proxyPort": null,
+          "proxyUser": null,
+          "proxyPassword": null
+        },
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1042,
+          "layoutY": 118
+        }
+      }
+    ],
+    "connections": [
+      {
+        "fromIndex": 0,
+        "toIndex": 1,
+        "type": "True"
+      },
+      {
+        "fromIndex": 0,
+        "toIndex": 2,
+        "type": "False"
+      },
+      {
+        "fromIndex": 0,
+        "toIndex": 22,
+        "type": "True"
+      },
+      {
+        "fromIndex": 3,
+        "toIndex": 4,
+        "type": "True"
+      },
+      {
+        "fromIndex": 3,
+        "toIndex": 5,
+        "type": "False"
+      },
+      {
+        "fromIndex": 6,
+        "toIndex": 7,
+        "type": "True"
+      },
+      {
+        "fromIndex": 6,
+        "toIndex": 8,
+        "type": "False"
+      },
+      {
+        "fromIndex": 9,
+        "toIndex": 10,
+        "type": "True"
+      },
+      {
+        "fromIndex": 9,
+        "toIndex": 11,
+        "type": "False"
+      },
+      {
+        "fromIndex": 12,
+        "toIndex": 13,
+        "type": "True"
+      },
+      {
+        "fromIndex": 12,
+        "toIndex": 14,
+        "type": "False"
+      },
+      {
+        "fromIndex": 15,
+        "toIndex": 16,
+        "type": "True"
+      },
+      {
+        "fromIndex": 15,
+        "toIndex": 17,
+        "type": "False"
+      },
+      {
+        "fromIndex": 18,
+        "toIndex": 19,
+        "type": "True"
+      },
+      {
+        "fromIndex": 18,
+        "toIndex": 20,
+        "type": "False"
+      },
+      {
+        "fromIndex": 21,
+        "toIndex": 0,
+        "type": "True"
+      },
+      {
+        "fromIndex": 21,
+        "toIndex": 3,
+        "type": "True"
+      },
+      {
+        "fromIndex": 21,
+        "toIndex": 6,
+        "type": "True"
+      },
+      {
+        "fromIndex": 21,
+        "toIndex": 9,
+        "type": "True"
+      },
+      {
+        "fromIndex": 21,
+        "toIndex": 12,
+        "type": "True"
+      },
+      {
+        "fromIndex": 21,
+        "toIndex": 15,
+        "type": "True"
+      },
+      {
+        "fromIndex": 21,
+        "toIndex": 18,
+        "type": "True"
+      },
+      {
+        "fromIndex": 22,
+        "toIndex": 23,
+        "type": "Success"
+      }
+    ],
+    "ruleChainConnections": null
+  }
+}
